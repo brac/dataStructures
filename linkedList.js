@@ -41,10 +41,6 @@ class LinkedList {
     this.length++
   }
 
-  insertAfter(value, target){
-
-  }
-
   contains(value){
     let node = this.head
     while (node) {
@@ -54,6 +50,32 @@ class LinkedList {
       node = node.next;
     }
     return false;
+  }
+
+  insertAfter(value, target){
+    // Find the target to insert after
+    if (this.contains(target)) {
+      let current = this.head
+      let previous = this.head
+
+      while (current) {
+        if (current.value === target) {
+          if (this.head === current) {
+            console.log('you targeted the head')
+            return
+          }
+          if (this.tail === current) {
+            console.log('you targeted the tail')
+            return
+          }
+
+          console.log(` I've matched ${current.value}`);
+          return
+        }
+        previous = current
+        current = current.next
+      }
+    }
   }
 
   remove(value){
@@ -106,4 +128,4 @@ amazingrace.add('prauge, poland')
 amazingrace.add('vancouver, british columbia')
 amazingrace.add('madison, wisconson')
 amazingrace.add('oakland, california')
-console.log(amazingrace)
+amazingrace.insertAfter('farts, buttville','oakland, california')
