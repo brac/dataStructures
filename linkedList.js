@@ -105,23 +105,27 @@ class LinkedList {
         if (current.value === target) {
           let node = new Node(value)
 
+          // If the target was the head
           if (this.head === current) {
-            // node.next = head.next
-            // this.head.next = node
-            // this.length++
+            node.next = this.head.next
+            this.head.next = node
+            this.length++
             return
           }
 
+          // If the target was the tail
           if (this.tail === current) {
-            // node.next = null
-            // previous.next = node
-            // this.tail = node
-            // this.length++
+            node.next = null
+            previous.next = node
+            this.tail = node
+            this.length++
             return
           }
 
+          // Unlink the current node and insert the new node
           node.next = current.next
           current.next = node
+          this.length++
           return
         }
         previous = current
@@ -141,8 +145,7 @@ amazingrace.add('prauge, poland')
 amazingrace.add('vancouver, british columbia')
 amazingrace.add('madison, wisconson')
 amazingrace.add('oakland, california')
-// amazingrace.insertAfter('farts, buttville','santa rosa, california')
-amazingrace.insertAfter('farts, buttville','vancouver, british columbia')
-// amazingrace.insertAfter('farts, buttville','oakland, california')
-console.log(amazingrace.head.next.next)
-console.log(amazingrace.head.next.next.next)
+amazingrace.insertAfter('farts, buttville','oakland, california')
+amazingrace.insertAfter('new york, new york','vancouver, british columbia')
+amazingrace.insertAfter('sanfran, smellsville','santa rosa, california')
+amazingrace.add('snipes, rudy')
