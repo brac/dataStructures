@@ -52,31 +52,7 @@ class LinkedList {
     return false;
   }
 
-  insertAfter(value, target){
-    // Find the target to insert after
-    if (this.contains(target)) {
-      let current = this.head
-      let previous = this.head
 
-      while (current) {
-        if (current.value === target) {
-          if (this.head === current) {
-            console.log('you targeted the head')
-            return
-          }
-          if (this.tail === current) {
-            console.log('you targeted the tail')
-            return
-          }
-
-          console.log(` I've matched ${current.value}`);
-          return
-        }
-        previous = current
-        current = current.next
-      }
-    }
-  }
 
   remove(value){
     // First comfirm the entry is in the list
@@ -117,6 +93,43 @@ class LinkedList {
     }
   }
 
+  insertAfter(value, target){
+    // Find the target to insert after
+    if (this.contains(target)) {
+      // Start at the begining of the list
+      let current = this.head
+      let previous = this.head
+
+      while (current) {
+        // Find the correct node
+        if (current.value === target) {
+          let node = new Node(value)
+
+          if (this.head === current) {
+            // node.next = head.next
+            // this.head.next = node
+            // this.length++
+            return
+          }
+
+          if (this.tail === current) {
+            // node.next = null
+            // previous.next = node
+            // this.tail = node
+            // this.length++
+            return
+          }
+
+          node.next = current.next
+          current.next = node
+          return
+        }
+        previous = current
+        current = current.next
+      }
+    }
+  }
+
   size(){
     return this.length
   }
@@ -128,4 +141,8 @@ amazingrace.add('prauge, poland')
 amazingrace.add('vancouver, british columbia')
 amazingrace.add('madison, wisconson')
 amazingrace.add('oakland, california')
-amazingrace.insertAfter('farts, buttville','oakland, california')
+// amazingrace.insertAfter('farts, buttville','santa rosa, california')
+amazingrace.insertAfter('farts, buttville','vancouver, british columbia')
+// amazingrace.insertAfter('farts, buttville','oakland, california')
+console.log(amazingrace.head.next.next)
+console.log(amazingrace.head.next.next.next)
