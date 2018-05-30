@@ -1,6 +1,36 @@
 // jshint asi:true
+// Reference:
+// [CodeBurst](https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571)
 
-// An exercise in understading a linked list as a data structure
+// An exercise in understanding a linked list as a data structure
+// TODO:
+//     return this to allow for chaining method calls
+//        remove
+//        addToHead
+//        more?
+//     peek method
+//     insertBefore method
+//     isEmpty method
+//     Enhance the constructor to accept values upon definition.
+//         You'll need something like this:
+           /*
+             constructor(...values) {
+                 this.head = null;
+                 this.length = 0;
+                 this.addToHead(...values);
+             }
+             _addSingleItemToHead(value) {
+                 const newNode = { value };
+                 newNode.next = this.head;
+                 this.head = newNode;
+                 this.length++;
+             }
+             addToHead(...values) {
+                 values.forEach(value => this._addSingleItemToHead(value));
+                 return this;
+             }
+           */
+
 class Node{
   constructor(value){
     this.value = value
